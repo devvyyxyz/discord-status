@@ -1,6 +1,6 @@
 # Discord API Status
-**Status Description:** Minor Service Outage
-**Status Indicator:** minor
+**Status Description:** All Systems Operational
+**Status Indicator:** none
 
 ## Component Statuses
 No component statuses available.
