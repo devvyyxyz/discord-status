@@ -1,6 +1,6 @@
 # Discord API Status
-**Status Description:** All Systems Operational
-**Status Indicator:** none
+**Status Description:** Partially Degraded Service
+**Status Indicator:** minor
 
 ## Component Statuses
 No component statuses available.
