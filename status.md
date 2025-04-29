@@ -1,6 +1,6 @@
 # Discord API Status
-**Status Description:** Partial System Outage
-**Status Indicator:** major
+**Status Description:** All Systems Operational
+**Status Indicator:** none
 
 ## Component Statuses
 No component statuses available.
