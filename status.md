@@ -1,5 +1,5 @@
 # Discord API Status
-**Status Description:** Minor Service Outage
+**Status Description:** Partially Degraded Service
 **Status Indicator:** minor
 
 ## Component Statuses
