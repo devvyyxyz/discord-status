@@ -1,34 +1,36 @@
-name: Update Discord Status
+name: Discord Status Tracker
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   schedule:
-    - cron: '0 * * * *'  # every hour
+    - cron: '0 * * * *'  # every hour on the hour
 
 jobs:
-  refresh-readme:
+  update-status:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '16.x'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Update status & file incidents
+      - name: Update status & log to issues
         run: npm run update-status
 
-      - name: Commit & Push changes
+      - name: Commit & push changes
         uses: EndBug/add-and-commit@v9
         with:
           message: chore: update Discord status
-          add: 'README.md'
+          add: |
+            README.md
