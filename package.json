@@ -2,11 +2,12 @@
     "name": "discord-status-tracker",
     "version": "1.0.0",
     "type": "module",
-    "description": "Periodically fetches Discord status and updates the README",
+    "description": "Periodically fetches Discord status, updates the README and files issues for new incidents",
     "scripts": {
       "update-status": "node scripts/updateStatus.js"
     },
     "dependencies": {
+      "@octokit/rest": "^19.0.12",
       "node-fetch": "^3.3.1"
     }
   }
