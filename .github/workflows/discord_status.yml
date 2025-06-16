@@ -1,39 +1,32 @@
 name: Update Discord Status
 
 on:
-  schedule:
-    - cron: "*/30 * * * *"  # Runs every 30 minutes
   push:
-    branches:
-      - main  # Optional: Run the workflow on push to the main branch
+    branches: [ main ]
+  schedule:
+    - cron: '0 * * * *'  # every hour on the hour
 
 jobs:
-  update-status:
+  refresh-readme:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          python-version: '3.x'
+          node-version: '16'
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run Discord Status Script
-        run: |
-          chmod +x discord_status.sh
-          ./discord_status.sh
+      - name: Update status in README
+        run: npm run update-status
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add status.md
-          git commit -m "Update Discord API status"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit & Push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: chore: update Discord status
+          add: 'README.md'

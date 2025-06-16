@@ -1,0 +1,12 @@
+{
+    "name": "discord-status-tracker",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Periodically fetches Discord status and updates the README",
+    "scripts": {
+      "update-status": "node scripts/updateStatus.js"
+    },
+    "dependencies": {
+      "node-fetch": "^3.3.1"
+    }
+  }
